@@ -9,8 +9,8 @@
         <label class="col-sm-3 col-form-label">Producto</label>
         <div class="col-sm-9">
           <input type="text" class="form-control" ngModel name="producto" id="producto"
-            placeholder="Nombre del producto" required="">
-          <span class="form-text text-danger">Debe ser de 3 letras</span>
+            placeholder="Nombre del producto" required minlength="3">
+          <span class="form-text text-danger" *ngIf="miFormulario.controls['producto'].invalid && miFormulario.controls['producto'].touched">Debe ser de 3 letras</span>
         </div>
       </div>
 
@@ -44,7 +44,13 @@
 <div class="row">
   <div class="col">
     <span>Valid</span>
-    <pre>{{ miFormulario.valid | json }}</pre>
+    <pre>{{ miFormulario.valid }}</pre>
+
+    <span>Pristine</span><!-- se a cambiado los valores por defecto que tienen los campos del form -->
+    <pre>{{ miFormulario.pristine }}</pre>
+
+    <span>Touched</span><!-- si se a tocado el form como hacer clic en un campo -->
+    <pre>{{ miFormulario.touched }}</pre>
 
     <span>Value</span>
     <pre>{{ miFormulario.value | json }}</pre>
