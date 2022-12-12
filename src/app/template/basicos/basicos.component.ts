@@ -4,24 +4,37 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-basicos',
   templateUrl: './basicos.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class BasicosComponent {
-
   @ViewChild('miFormulario') miFormulario!: NgForm;
 
+  initForm = {
+    producto: 'Algo',
+    precio: 10,
+    existencias: 1,
+  };
+
   nombreValido(): boolean {
-    return this.miFormulario?.controls['producto'].invalid && this.miFormulario?.controls['producto'].touched;
+    return (
+      this.miFormulario?.controls['producto'].invalid &&
+      this.miFormulario?.controls['producto'].touched
+    );
   }
 
-  precioValido():boolean {
-    return this.miFormulario?.controls['precio'].touched && this.miFormulario?.controls['precio'].value < 0;
+  precioValido(): boolean {
+    return (
+      this.miFormulario?.controls['precio'].touched &&
+      this.miFormulario?.controls['precio'].value < 0
+    );
   }
 
   // guardar(miFormulario: NgForm) {
   guardar() {
-    console.log(this.miFormulario);
+    console.log('Posted succesful');
+    this.miFormulario.resetForm({
+      precio: 0,
+      existencias: 0,
+    });
   }
-
 }
