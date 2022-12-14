@@ -6,6 +6,7 @@ import {
   noPuedeSerStrider,
 } from 'src/app/shared/validator/validaciones';
 import { ValidatorService } from '../../../shared/validator/validator.service';
+import { EmailValidatorService } from '../../../shared/validator/email-validator.service';
 
 @Component({
   selector: 'app-registro',
@@ -28,6 +29,7 @@ export class RegistroComponent implements OnInit {
           Validators.required,
           Validators.pattern(this.validatorService.emailPattern),
         ],
+        [this.emailValidator],
       ],
       username: [
         '',
@@ -45,14 +47,17 @@ export class RegistroComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private validatorService: ValidatorService
+    private validatorService: ValidatorService,
+    private emailValidator: EmailValidatorService
   ) {}
 
   ngOnInit() {
     this.miFormulario.reset({
       nombre: 'Fabiaan Montoya',
-      email: 'prueba1@web.com',
+      email: 'test1@test.com',
       username: 'f4biaan',
+      password: '123456',
+      password2: '123456',
     });
   }
 
