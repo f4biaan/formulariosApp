@@ -1,17 +1,17 @@
 <h2>Reactive: <small>Switches</small></h2>
 <hr>
 
-<form>
+<form [formGroup]="miFormulario" (ngSubmit)="guardar()">
   <div class="row mb-3">
     <label class="col-sm-3 col-form-label">Género</label>
     <div class="col-sm-9">
       <div class="form-check">
-        <input class="form-check-input" type="radio" value="M" name="radioGenero" id="flexRadioMasculino">
+        <input class="form-check-input" type="radio" value="M" formControlName="genero" id="flexRadioMasculino">
         <label class="form-check-label" for="flexRadioMasculino">Masculino</label>
       </div>
 
       <div class="form-check">
-        <input class="form-check-input" type="radio" value="F" name="radioGenero" id="flexRadioFemenino">
+        <input class="form-check-input" type="radio" value="F" formControlName="genero" id="flexRadioFemenino">
         <label class="form-check-label" for="flexRadioFemenino">Femenino</label>
       </div>
     </div>
@@ -23,7 +23,7 @@
     <label class="col-sm-3 col-form-label">Notificaciones</label>
     <div class="col-sm-9">
       <div class="form-check form-switch mt-2">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
+        <input class="form-check-input" type="checkbox" formControlName="notificaciones" role="switch" id="flexSwitchCheckChecked">
         <label class="form-check-label" for="flexSwitchCheckChecked">Quiero recibir notificaciones</label>
       </div>
     </div>
@@ -34,7 +34,7 @@
     <label class="col-sm-3 col-form-label"></label>
     <div class="col-sm-9">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" formControlName="condiciones" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
           Terminos y condiciones
         </label>
@@ -45,12 +45,12 @@
   <!-- boton submit -->
   <div class="row">
     <div class="col">
-      <button class="btn btn-primary float-end">Guardar</button>
+      <button type="submit" class="btn btn-primary float-end">Guardar</button>
     </div>
   </div>
 </form>
 
-<!-- <span>Valor del formulario</span>
+<span>Valor del formulario</span>
 <pre>{{miFormulario.value | json}}</pre>
 
 <span>Persona</span>
@@ -59,8 +59,8 @@
 <span>Valid</span>
 <pre>{{miFormulario.valid}}</pre>
 
-<span>Términos</span>
-<pre>{{miFormulario.controls['terminos'].errors | json}}</pre>
+<!-- <span>Términos</span>
+<pre>{{miFormulario.controls['terminos'].errors | json}}</pre> -->
 
 <br>
-<pre>Condiciones: </pre> -->
+<pre>Condiciones: </pre>
