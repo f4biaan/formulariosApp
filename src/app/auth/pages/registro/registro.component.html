@@ -19,7 +19,7 @@
         <label class="col-sm-3">Email</label>
         <div class="col-sm-9">
           <input type="email" class="form-control" formControlName="email" placeholder="Email del usuario">
-          <span class="form-text text-danger" *ngIf="campoNoValido('email')">El correo es obligatorio</span>
+          <span class="form-text text-danger" *ngIf="campoNoValido('email')">{{emailErrorMsg}}</span>
         </div>
       </div>
 

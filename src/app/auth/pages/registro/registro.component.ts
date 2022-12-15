@@ -45,6 +45,18 @@ export class RegistroComponent implements OnInit {
     }
   );
 
+  get emailErrorMsg(): string {
+    const errors = this.miFormulario.get('email')?.errors;
+    if (errors?.['required']) {
+      return 'Email es obligatorio';
+    } else if (errors?.['pattern']) {
+      return 'El valor ingresado no tiene formato de email';
+    } else if (errors?.['emailTomado']) {
+      return 'El email ya fue tomado';
+    }
+    return '';
+  };
+
   constructor(
     private fb: FormBuilder,
     private validatorService: ValidatorService,
